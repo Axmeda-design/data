@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+         
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f1f1;
+        }
+
+        .boss{
+            width:500px ; 
+            background-color: #fff;
+            padding: 20px;
+            position: absolute;
+            top: 30%;
+            /* left: 30%; */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        #time{
+            font-size: 40px;
+            color: #333;
+        }
+
+        #today{
+            font-size: 25px;
+            color: #333;
+        }
+
+        #data{
+            font-size: 20px;
+            color: #999;
+        }
+
+        @media (min-width: 480px){
+            #boss {
+                width: 100%;
+                justify-content: center;
+                display: flex;
+            }
+
+            #time{
+                font-size: 20px;
+            }
+
+            #today{
+                font-size: 15px;
+            }
+
+            #data{
+                font-size: 15px;
+            }
+
+            #time, #today, #data{
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="containerr">
+        <div class="boss">
+            <div id="today">Today</div>
+
+            <div >
+                <snap id="time">10 : 45 : 45 </snap>
+
+            </div>
+
+            <div>
+                <snap id="data">
+                    wednesday 25 may 2022
+                </snap>
+            </div>
+        </div>
+    </div>
+
+    <script>
+      function updateTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timeString = `${hours}:${minutes}:${seconds}`;
+
+    document.getElementById('time').textContent = timeString;
+}
+
+// Update the time every second
+setInterval(updateTime, 1000);
+
+// Initial call to display time immediately
+updateTime();
+
+// Example data update
+const dataElement = document.getElementById('data');
+dataElement.textContent =  new Date().toLocaleDateString();
+  
+// Function to simulate fetching new data
+
+
+
+
+    </script>
+</body>
+</html>
